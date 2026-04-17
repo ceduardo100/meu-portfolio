@@ -65,7 +65,7 @@
       background: var(--cor-card);
       padding: 20px; border-radius: 10px; width: 260px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      text-align: left; transition: transform 0.3s, box-shadow 0.3s;
+      text-align: center; transition: transform 0.3s, box-shadow 0.3s;
       opacity: 0; transform: translateY(20px); animation: fadeUp 0.6s forwards;
     }
 
@@ -102,14 +102,15 @@
 
 <header>
   <nav>
-    <h1>Carlos Eduardo</h1>
-    <ul>
-      <li><a href="#sobre">Sobre</a></li>
-      <li><a href="#projetos">Projetos</a></li>
-      <li><a href="#contato">Contato</a></li>
-    </ul>
-    <button class="btn-theme" id="toggleTheme">Modo Escuro</button>
-  </nav>
+  <h1>Carlos Eduardo</h1>
+
+  <ul>
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#projetos">Projetos</a></li>
+    <li><a href="#contato">Contato</a></li>
+    <li><button class="btn-theme" id="toggleTheme">Modo Escuro</button></li>
+  </ul>
+</nav>
 </header>
 
 <section id="sobre">
@@ -147,7 +148,7 @@
   const projetos = [
   {
     titulo: "Meu Portfólio",
-    descricao: "Site responsivo desenvolvido com HTML, CSS e JavaScript.",
+    descricao: "Site desenvolvido com HTML, CSS e JavaScript.",
     link: "https://github.com/ceduardo100/meu-portfolio"
   }
 ];
