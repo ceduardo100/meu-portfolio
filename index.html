@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfólio - Carlos Eduardo</title>
+
+  <style>
+    :root {
+      --cor-primaria: #2c3e50;
+      --cor-secundaria: #3498db;
+      --cor-fundo: #f4f4f4;
+      --cor-card: #ffffff;
+      --cor-texto: #222;
+    }
+
+    body.dark-theme {
+      --cor-primaria: #111;
+      --cor-secundaria: #9b59b6;
+      --cor-fundo: #0f172a;
+      --cor-card: #111827;
+      --cor-texto: #e5e7eb;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: var(--cor-fundo);
+      color: var(--cor-texto);
+      transition: 0.3s;
+    }
+
+    header { background: var(--cor-primaria); color: white; padding: 15px; }
+
+    nav {
+      display: flex; justify-content: space-between; align-items: center; gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    nav ul { list-style: none; display: flex; gap: 15px; }
+    nav a { color: white; text-decoration: none; }
+
+    .btn-theme {
+      padding: 6px 10px; border: none; cursor: pointer; background: var(--cor-secundaria); color: #fff; border-radius: 6px;
+    }
+
+    section { padding: 40px 20px; text-align: center; }
+
+    #sobre img {
+      width: 150px; height: 150px; border-radius: 50%; margin: 20px auto; display: block; object-fit: cover; border: 3px solid var(--cor-secundaria);
+    }
+
+    .social {
+      margin-top: 10px; display: flex; justify-content: center; gap: 15px;
+    }
+
+    .social a { text-decoration: none; color: var(--cor-secundaria); font-weight: bold; }
+
+    #projetos-container {
+      display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;
+    }
+
+    article {
+      background: var(--cor-card);
+      padding: 20px; border-radius: 10px; width: 260px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-align: left; transition: transform 0.3s, box-shadow 0.3s;
+      opacity: 0; transform: translateY(20px); animation: fadeUp 0.6s forwards;
+    }
+
+    article:hover { transform: translateY(-5px); box-shadow: 0 6px 18px rgba(0,0,0,0.2); }
+
+    article a { display: inline-block; margin-top: 10px; color: var(--cor-secundaria); }
+
+    form {
+      max-width: 400px; margin: auto; display: flex; flex-direction: column; gap: 10px;
+    }
+
+    input, textarea {
+      padding: 10px; border: 1px solid #ccc; width: 100%; border-radius: 6px;
+    }
+
+    button[type="submit"] {
+      padding: 10px; background: var(--cor-secundaria); color: white; border: none; cursor: pointer; border-radius: 6px;
+    }
+
+    footer {
+      background: var(--cor-primaria); color: white; text-align: center; padding: 15px; margin-top: 20px;
+    }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (min-width: 768px) {
+      nav { flex-direction: row; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <h1>Carlos Eduardo</h1>
+    <ul>
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#projetos">Projetos</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+    <button class="btn-theme" id="toggleTheme">Modo Escuro</button>
+  </nav>
+</header>
+
+<section id="sobre">
+  <h2>Sobre Mim</h2>
+  <img src="minha-foto.png" alt="Minha foto">
+  <p>Meu nome é Carlos Eduardo, sou estudante de Sistemas para Internet e estou em formação na área de desenvolvimento web. Tenho interesse em criar sites modernos, responsivos e funcionais.</p>
+
+  <div class="social">
+    <a href="https://github.com/ceduardo100" target="_blank">GitHub</a>
+    <a href="https://linkedin.com/in/ceduardo100" target="_blank">LinkedIn</a>
+    <a href="https://wa.me/5589999221131" target="_blank">WhatsApp</a>
+  </div>
+</section>
+
+<section id="projetos">
+  <h2>Meus Projetos</h2>
+  <div id="projetos-container"></div>
+</section>
+
+<section id="contato">
+  <h2>Contato</h2>
+  <form id="form-contato">
+    <input type="text" id="nome" placeholder="Seu nome" required>
+    <input type="email" id="email" placeholder="Seu email" required>
+    <textarea id="mensagem" placeholder="Sua mensagem"></textarea>
+    <button type="submit">Enviar</button>
+  </form>
+</section>
+
+<footer>
+  <p>2026 - Desenvolvido por Carlos Eduardo</p>
+</footer>
+
+<script>
+  const projetos = [
+  {
+    titulo: "Meu Portfólio",
+    descricao: "Site responsivo desenvolvido com HTML, CSS e JavaScript.",
+    link: "https://github.com/seuusuario/portfolio"
+  }
+];
+
+  const container = document.getElementById("projetos-container");
+
+  projetos.forEach((projeto, index) => {
+    container.innerHTML += `
+      <article style="animation-delay:${index * 0.2}s">
+        <h3>${projeto.titulo}</h3>
+        <p>${projeto.descricao}</p>
+        <a href="${projeto.link}" target="_blank">Ver no GitHub</a>
+      </article>
+    `;
+  });
+
+  const form = document.getElementById("form-contato");
+
+  form.addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const nome = document.getElementById("nome").value;
+    const email = document.getElementById("email").value;
+
+    if(nome && email) {
+      alert("Mensagem enviada com sucesso!");
+      form.reset();
+    } else {
+      alert("Preencha os campos obrigatórios!");
+    }
+  });
+
+  const btn = document.getElementById("toggleTheme");
+
+  btn.addEventListener("click", () => {
+    document.body.classList.toggle("dark-theme");
+    btn.textContent = document.body.classList.contains("dark-theme") ? "Modo Claro" : "Modo Escuro";
+  });
+</script>
+
+</body>
+</html>
